@@ -117,11 +117,11 @@ export const deleteProductController = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const softDeletedProduct = await Product.findOneAndUpdate({
-      _id: id,
-      isDeleted: true,
-      seller: req.user.userId,
-    });
+    const softDeletedProduct = await Product.findOneAndUpdate(
+      { _id: id, seller: req.user.userId },
+      { isDeleted: true },
+      { new: true }
+    );
 
     if (!softDeletedProduct) {
       return res
