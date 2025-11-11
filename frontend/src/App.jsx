@@ -8,7 +8,9 @@ import {
 import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import AddProduct from "./pages/AddProduct";
 import api from "./api";
+import SellerProducts from "./pages/SellerProducts";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -16,9 +18,7 @@ export default function App() {
   const fetchCurrentUser = async () => {
     try {
       const { data } = await api.get("/users");
-      if (data.success) {
-        setUser(data.user);
-      }
+      if (data.success) setUser(data.user);
     } catch {
       setUser(null);
     }
@@ -33,34 +33,18 @@ export default function App() {
       <Navbar user={user} setUser={setUser} />
       <div className="container">
         <Routes>
-          {/* Public routes */}
           <Route
             path="/register"
-            element={
-              !user ? (
-                <div className="auth-page">
-                  <Register />
-                </div>
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
+            element={!user ? <Register /> : <Navigate to="/" replace />}
           />
 
           <Route
             path="/login"
             element={
-              !user ? (
-                <div className="auth-page">
-                  <Login setUser={setUser} />
-                </div>
-              ) : (
-                <Navigate to="/" replace />
-              )
+              !user ? <Login setUser={setUser} /> : <Navigate to="/" replace />
             }
           />
 
-          {/* Protected route */}
           <Route
             path="/"
             element={
@@ -72,6 +56,30 @@ export default function App() {
                     <h2>Hello, {user.name}</h2>
                   )}
                   <p>Welcome to SwiftMart 👋</p>
+                </div>
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+
+          <Route
+            path="/add-product"
+            element={
+              user && user.role === "seller" ? (
+                <AddProduct />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+
+          <Route
+            path="/my-products"
+            element={
+              user && user.role === "seller" ? (
+                <div className="auth-page">
+                  <SellerProducts />
                 </div>
               ) : (
                 <Navigate to="/login" replace />

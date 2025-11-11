@@ -33,8 +33,13 @@ export default function Navbar({ user, setUser }) {
           </>
         ) : user.role === "seller" ? (
           <>
-            <button className="link">My Products</button>
-            <button className="link">Add Product</button>
+            <Link to="/my-products" className="link">
+              My Products
+            </Link>
+            <Link to="/add-product" className="link">
+              Add Product
+            </Link>
+
             <button className="btn-logout" onClick={handleLogout}>
               Logout
             </button>
