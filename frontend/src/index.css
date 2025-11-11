@@ -1,0 +1,47 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: #f9fafb;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Main Container ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+
+  /* Center forms vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* ===== Welcome Box ===== */
+.welcome-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+}
+
+.welcome-box h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

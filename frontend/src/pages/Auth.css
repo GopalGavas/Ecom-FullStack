@@ -1,0 +1,56 @@
+/* ===== Auth Pages ===== */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===== Auth Card ===== */
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: left;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ===== Forms ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: #4b6cb7;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #395694;
+}
+
+.msg {
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+}
