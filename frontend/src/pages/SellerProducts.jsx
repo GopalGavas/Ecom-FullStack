@@ -66,6 +66,7 @@ export default function SellerProducts() {
             <div className="product-info">
               <h3>{p.title}</h3>
               <p className="brand">{p.brandName}</p>
+              <p className="price">₹{p.price}</p>
               <p className="category">{p.category}</p>
               <p className="quantity">
                 Quantity: {p.quantity ?? "Not specified"}

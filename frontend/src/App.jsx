@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import AddProduct from "./pages/AddProduct";
 import api from "./api";
 import SellerProducts from "./pages/SellerProducts";
+import EditProduct from "./pages/EditProduct";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -37,14 +38,12 @@ export default function App() {
             path="/register"
             element={!user ? <Register /> : <Navigate to="/" replace />}
           />
-
           <Route
             path="/login"
             element={
               !user ? <Login setUser={setUser} /> : <Navigate to="/" replace />
             }
           />
-
           <Route
             path="/"
             element={
@@ -62,7 +61,6 @@ export default function App() {
               )
             }
           />
-
           <Route
             path="/add-product"
             element={
@@ -73,13 +71,24 @@ export default function App() {
               )
             }
           />
-
           <Route
             path="/my-products"
             element={
               user && user.role === "seller" ? (
                 <div className="auth-page">
                   <SellerProducts />
+                </div>
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/edit-product/:id"
+            element={
+              user && user.role === "seller" ? (
+                <div className="auth-page">
+                  <EditProduct />
                 </div>
               ) : (
                 <Navigate to="/login" replace />

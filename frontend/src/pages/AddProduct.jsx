@@ -9,6 +9,7 @@ export default function AddProduct() {
   const [form, setForm] = useState({
     title: "",
     brandName: "",
+    price: "",
     quantity: "",
     category: "",
     imageUrl: "",
@@ -54,6 +55,14 @@ export default function AddProduct() {
           value={form.brandName}
           onChange={handleChange}
           required
+        />
+
+        <input
+          type="number"
+          name="price"
+          placeholder="Price"
+          value={form.price}
+          onChange={handleChange}
         />
 
         <input

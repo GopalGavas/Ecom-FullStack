@@ -2,7 +2,7 @@ import { Product } from "../models/product.model.js";
 
 export const createProductController = async (req, res) => {
   try {
-    const { title, brandName, quantity, category, imageUrl } = req.body;
+    const { title, brandName, quantity, price, category, imageUrl } = req.body;
 
     if (!title || !brandName || !category) {
       return res
@@ -14,6 +14,7 @@ export const createProductController = async (req, res) => {
       title,
       brandName,
       quantity,
+      price,
       category,
       imageUrl: imageUrl || "",
       seller: req.user.userId,
@@ -82,9 +83,9 @@ export const viewSellerProductsController = async (req, res) => {
 export const updateProductController = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, brandName, quantity, category, imageUrl } = req.body;
+    const { title, brandName, price, quantity, category, imageUrl } = req.body;
 
-    const updates = { title, brandName, quantity, category, imageUrl };
+    const updates = { title, brandName, price, quantity, category, imageUrl };
 
     const product = await Product.findOneAndUpdate(
       { _id: id, seller: req.user.userId, isDeleted: false },

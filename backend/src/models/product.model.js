@@ -18,6 +18,11 @@ const productSchema = new Schema({
     trim: true,
   },
 
+  price: {
+    type: Number,
+    required: true,
+  },
+
   quantity: {
     type: Number,
     default: 1,
