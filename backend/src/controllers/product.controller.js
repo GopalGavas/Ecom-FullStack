@@ -92,7 +92,10 @@ export const viewSingleProductController = async (req, res) => {
 
 export const viewSellerProductsController = async (req, res) => {
   try {
-    const products = await Product.find({ seller: req.user.userId });
+    const products = await Product.find({
+      seller: req.user.userId,
+      isDeleted: false,
+    });
     return res.status(200).json({ success: true, products });
   } catch (error) {
     console.error("Get Seller Products Error:", error);
