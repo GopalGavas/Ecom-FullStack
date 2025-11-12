@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
-import "./AddProduct.css";
+import "../styles/AddProduct.css";
 
 export default function AddProduct() {
   const navigate = useNavigate();

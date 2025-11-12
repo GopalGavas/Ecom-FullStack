@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
-import "./SellerProducts.css"; // create this file if not already
+import "../styles/SellerProducts.css";
 
 export default function SellerProducts() {
   const [products, setProducts] = useState([]);

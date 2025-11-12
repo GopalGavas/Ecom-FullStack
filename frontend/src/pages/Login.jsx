@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import "./Auth.css";
+import "../styles/Auth.css";
 
 export default function Login({ setUser }) {
   const [form, setForm] = useState({ email: "", password: "" });
