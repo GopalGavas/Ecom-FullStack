@@ -35,16 +35,39 @@ export const createProductController = async (req, res) => {
 
 export const viewAllProductsController = async (req, res) => {
   try {
-    const products = await Product.find().populate("seller", "name email");
+    const { category, search } = req.query;
+
+    // Build a dynamic filter object
+    const filter = {};
+
+    if (category && category !== "All") {
+      // Case-insensitive category match
+      filter.category = { $regex: category, $options: "i" };
+    }
+
+    if (search) {
+      // Partial match on title or brandName
+      filter.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { brandName: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    const products = await Product.find(filter).populate(
+      "seller",
+      "name email"
+    );
+
     return res.status(200).json({
       success: true,
       products,
     });
   } catch (error) {
     console.error("Get All Products Error:", error);
-    return res
-      .status(500)
-      .json({ success: false, message: "Internal server error" });
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
   }
 };
 

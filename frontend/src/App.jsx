@@ -12,6 +12,7 @@ import AddProduct from "./pages/AddProduct";
 import api from "./api";
 import SellerProducts from "./pages/SellerProducts";
 import EditProduct from "./pages/EditProduct";
+import ViewProducts from "./pages/ViewProducts";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -95,6 +96,7 @@ export default function App() {
               )
             }
           />
+          <Route path="/products" element={<ViewProducts />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,189 @@
+/* === Unified Styling for View Products Page === */
+
+.vp-wrapper {
+  padding: 1.5rem 3rem;
+  background-color: #f5f7fa; /* slightly softer tone for contrast */
+  min-height: 100vh; /* ✅ ensures full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.vp-filterbar,
+.vp-searchbar {
+  flex-shrink: 0;
+}
+
+/* === Filter Bar === */
+.vp-filterbar {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 0.75rem 0.5rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  scrollbar-width: none;
+}
+.vp-filterbar::-webkit-scrollbar {
+  display: none;
+}
+
+.vp-filter-btn {
+  flex-shrink: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 25px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  font-size: 0.95rem;
+}
+.vp-filter-btn:hover {
+  background-color: #f0f0f0;
+}
+.vp-filter-btn.active {
+  background-color: #4b6cb7;
+  color: #fff;
+  border-color: #4b6cb7;
+}
+
+/* === Search Bar === */
+.vp-searchbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+.vp-search {
+  display: flex;
+  gap: 8px;
+}
+.vp-search input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 280px;
+  background: #fff;
+}
+.vp-search button {
+  border: none;
+  background: #4b6cb7;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.vp-search button:hover {
+  background-color: #3953a4;
+}
+
+/* === Product Grid (similar to SellerProducts) === */
+/* --- Product Grid (consistent + responsive) --- */
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: stretch;
+  min-height: 60vh;
+}
+
+/* --- Product Card (seller-style consistency) --- */
+.vp-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 250px;
+  min-height: 350px; /* ✅ ensures uniform height */
+  box-sizing: border-box;
+}
+
+.vp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.vp-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Info Block */
+.vp-info-block {
+  margin-top: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Title + text */
+.vp-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #222;
+  min-height: 40px; /* ✅ prevents uneven height from long/short titles */
+  line-height: 1.3;
+}
+
+.vp-brand,
+.vp-category {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.2rem 0;
+}
+
+.vp-price {
+  color: #4b6cb7;
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
+/* Add to cart button */
+.vp-cta {
+  border: none;
+  background: #28a745;
+  color: #fff;
+  padding: 0.6rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+.vp-cta:hover {
+  background: #218838;
+}
+
+/* Empty state */
+.vp-info,
+.vp-error {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.vp-info {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #555;
+  font-size: 1rem;
+}
