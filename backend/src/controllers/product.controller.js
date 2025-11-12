@@ -37,8 +37,7 @@ export const viewAllProductsController = async (req, res) => {
   try {
     const { category, search } = req.query;
 
-    // Build a dynamic filter object
-    const filter = {};
+    const filter = { isDeleted: false };
 
     if (category && category !== "All") {
       // Case-insensitive category match
