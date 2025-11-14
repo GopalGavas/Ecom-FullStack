@@ -63,8 +63,18 @@ export default function ViewProducts() {
     fetchProducts(selectedCategory, searchTerm);
   };
 
-  const handleAddToCart = (productId) => {
-    alert(`Product ${productId} added to cart!`);
+  const handleAddToCart = async (productId) => {
+    try {
+      const { data } = await api.post("/cart/add", { productId, quantity: 1 });
+      if (data.success) {
+        alert("Product added to cart!");
+      } else {
+        alert(data.message || "Failed to add to cart");
+      }
+    } catch (err) {
+      console.error("Add to Cart Error:", err);
+      alert("Something went wrong while adding to cart!");
+    }
   };
 
   return (

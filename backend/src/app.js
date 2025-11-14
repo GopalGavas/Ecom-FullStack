@@ -23,6 +23,6 @@ import cartRouter from "./routes/cart.routes.js";
 app.use("/api/users", userRouter);
 app.use("/api/sellers", sellerRouter);
 app.use("/api/products", productRouter);
-app.use("/api/carts", cartRouter);
+app.use("/api/cart", cartRouter);
 
 export default app;

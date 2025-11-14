@@ -1,21 +1,23 @@
 import { Router } from "express";
-import { verifyJWT } from "../middlewares/auth.middleware.js";
 import {
   addToCartController,
-  clearCartController,
   getCartController,
-  removeFromCartController,
   updateCartQuantityController,
+  removeFromCartController,
+  clearCartController,
 } from "../controllers/cart.controller.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.use(verifyJWT);
+router.post("/add", verifyJWT, addToCartController);
+router.get("/", verifyJWT, getCartController);
+router.put("/update", verifyJWT, updateCartQuantityController);
+// preferred RESTful remove:
+router.delete("/remove/:productId", verifyJWT, removeFromCartController);
+// fallback accept body-based remove if needed
+router.put("/remove", verifyJWT, removeFromCartController);
 
-router.post("/add", addToCartController);
-router.get("/", getCartController);
-router.put("/update", updateCartQuantityController);
-router.delete("/remove/:productId", removeFromCartController);
-router.delete("/clear", clearCartController);
+router.delete("/clear", verifyJWT, clearCartController);
 
 export default router;

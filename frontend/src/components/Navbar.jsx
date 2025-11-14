@@ -49,7 +49,9 @@ export default function Navbar({ user, setUser }) {
             <Link to="/products" className="link">
               View Products
             </Link>
-            <button className="link">Cart</button>
+            <Link to="/cart" className="link">
+              Cart
+            </Link>
             <button className="btn-logout" onClick={handleLogout}>
               Logout
             </button>
