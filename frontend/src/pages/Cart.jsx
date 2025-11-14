@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api";
 import "../styles/Cart.css";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -87,6 +89,10 @@ export default function Cart() {
     }
   };
 
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
+
   if (loading) return <p className="cart-info">Loading cart...</p>;
   if (error) return <p className="cart-error">{error}</p>;
   if (!cart || cart.items.length === 0)
@@ -154,7 +160,10 @@ export default function Cart() {
       {/* Cart Total */}
       <div className="cart-summary">
         <h3>Total: ₹{totalPrice}</h3>
-        <button className="checkout-btn">Proceed to Checkout</button>
+        <button className="checkout-btn" onClick={handleCheckout}>
+          Proceed to Checkout
+        </button>
+
         <button className="clear-cart-btn" onClick={handleClearCart}>
           Clear Cart
         </button>

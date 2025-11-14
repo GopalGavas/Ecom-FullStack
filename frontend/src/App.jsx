@@ -14,6 +14,8 @@ import SellerProducts from "./pages/SellerProducts";
 import EditProduct from "./pages/EditProduct";
 import ViewProducts from "./pages/ViewProducts";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/CheckoutPage";
+import OrderSuccess from "./pages/OrderSuccess";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -99,6 +101,8 @@ export default function App() {
           />
           <Route path="/products" element={<ViewProducts />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
         </Routes>
       </div>
     </Router>
