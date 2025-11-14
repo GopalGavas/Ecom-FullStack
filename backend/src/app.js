@@ -18,9 +18,11 @@ app.use(express.json());
 import userRouter from "./routes/user.routes.js";
 import sellerRouter from "./routes/seller.routes.js";
 import productRouter from "./routes/product.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 
 app.use("/api/users", userRouter);
 app.use("/api/sellers", sellerRouter);
 app.use("/api/products", productRouter);
+app.use("/api/carts", cartRouter);
 
 export default app;
